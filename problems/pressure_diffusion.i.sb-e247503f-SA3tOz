@@ -1,0 +1,60 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 [Mesh]\
+type = GeneratedMesh\
+dim = 2\
+nx = 100\
+ny = 10\
+xmax = 0.304\
+ymax = 0.0257\
+[]\
+\
+[Problem]\
+type = FEProblems \
+coord_type = RZ\
+rz_coord_axis = X\
+[]\
+\
+[Variables]\
+	[pressure]\
+[]\
+\
+[Kernels]\
+	[diffusion]\
+	 type = ADDiffusion\
+	 variable = pressure \
+	[]\
+[]\
+\
+[BCs]\
+	[inlet]\
+		type=ADDirichletBC\
+		variable= pressure		\
+		boundary= left\
+		value= 4000\
+	[]\
+	[outlet]\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 		type=ADDirichletBC\
+		variable= pressure\
+		boundary= right\
+		value= 0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 	[]\
+[]\
+\
+[Executioner]\
+	type = Steady \
+	solve_type = NEWTON\
+	petsc_options_iname = \'91 -pc_type -pc_hypre_type\'92\
+	petsc_options_value = \'91hypre	boomeramg\'92\
+[]\
+\
+[Outputs]\
+exodus = true\
+[]}
